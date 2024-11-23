@@ -33,7 +33,7 @@
       document.getElementById("moveLeftBttn").addEventListener(
         "click",
         function () {
-          createRandomSquare(false);
+          gameTick();
           move(-1, 0);
         },
         false
@@ -42,7 +42,7 @@
       document.getElementById("moveUpBttn").addEventListener(
         "click",
         function () {
-          createRandomSquare(false);
+          gameTick();
           move(0, -1);
         },
         false
@@ -51,7 +51,7 @@
       document.getElementById("moveDownBttn").addEventListener(
         "click",
         function () {
-          createRandomSquare(false);
+          gameTick();
           move(0, 1);
         },
         false
@@ -60,11 +60,33 @@
       document.getElementById("moveRightBttn").addEventListener(
         "click",
         function () {
-          createRandomSquare(false);
+          gameTick();
           move(1, 0);
         },
         false
       );
+
+      // Keyboard events
+      document.onkeydown = checkKey;
+
+      function checkKey(e) {
+        e = e || window.event;
+        console.log(e);
+
+        if (e.keyCode == 38) {
+          gameTick();
+          move(0, -1);
+        } else if (e.keyCode == 40) {
+          gameTick();
+          move(0, 1);
+        } else if (e.keyCode == 37) {
+          gameTick();
+          move(-1, 0);
+        } else if (e.keyCode == 39) {
+          gameTick();
+          move(1, 0);
+        }
+      }
     </script>
   </body>
 </html>

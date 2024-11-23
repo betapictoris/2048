@@ -134,3 +134,14 @@ function createRandomSquare(isStartOfGame) {
 
   setGrid(x, y, Math.floor(Math.random() * 2 + 1));
 }
+
+function gameTick() {
+  createRandomSquare(false);
+
+  [1, 1, 1, 1].every((val, i, arr) => val === arr[0]); // true
+
+  if (grid.every((val, i, arr) => val.every((val, i, arr) => val >= 1))) {
+    alert("You lost!");
+    window.location.reload();
+  }
+}
