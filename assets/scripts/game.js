@@ -100,12 +100,6 @@ function move(xDirection, yDirection) {
         yi + yDirection < 4
       ) {
         if (
-          gridValues[yi][xi] !== 0 &&
-          gridValues[yi + yDirection][xi + xDirection] === 0
-        ) {
-          setGrid(xi + 1 + xDirection, yi + 1 + yDirection, gridValues[yi][xi]);
-          clearSquare(xi + 1, yi + 1);
-        } else if (
           gridValues[yi + yDirection][xi + xDirection] === gridValues[yi][xi]
         ) {
           setGrid(
@@ -113,6 +107,11 @@ function move(xDirection, yDirection) {
             yi + 1 + yDirection,
             gridValues[yi][xi] + 1
           );
+          clearSquare(xi + 1, yi + 1);
+        }
+
+        if (gridValues[yi + yDirection][xi + xDirection] === 0) {
+          setGrid(xi + 1 + xDirection, yi + 1 + yDirection, gridValues[yi][xi]);
           clearSquare(xi + 1, yi + 1);
         }
       }
@@ -138,12 +137,13 @@ function createRandomSquare(isStartOfGame) {
 }
 
 function gameTick() {
-  createRandomSquare(false);
-
-  [1, 1, 1, 1].every((val, i, arr) => val === arr[0]); // true
+  console.log("tick");
 
   if (grid.every((val, i, arr) => val.every((val, i, arr) => val >= 1))) {
-    alert("You lost!");
+    alert("Game over");
     window.location.reload();
+    throw "Game over, ending event."; // Stops memory leak. ¯\_(ツ)_/¯
   }
+
+  createRandomSquare(false);
 }
