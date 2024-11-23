@@ -1,3 +1,5 @@
+![Screenshot of my implementation of 2048 on a JavaScript canvas.](screenshot.png)
+
 2048 on a JavaScript canvas.
 
 ## Why do we need another 2048 clone?
@@ -28,3 +30,8 @@ Although, using a canvas isn't always the easiest:
 - We are given no knowledge of the exact state within the canvas, every check to
   see where blocks are and what they are touching must be done in JavaScript
   with the hope that the canvas has the same state that we think it has.
+
+## Why doesn't it look all that pretty?
+
+I've slowly given up on making websites look nice, feel free to fork it and make
+your own that looks fancy. I'm also open to pull requests ;) .
