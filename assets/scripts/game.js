@@ -106,3 +106,20 @@ function move(xDirection, yDirection) {
     }
   }
 }
+
+function createRandomSquare(isStartOfGame) {
+  x = Math.floor(Math.random() * 4 + 1);
+  y = Math.floor(Math.random() * 4 + 1);
+
+  while (grid[y - 1][x - 1] !== 0) {
+    x = Math.floor(Math.random() * 4 + 1);
+    y = Math.floor(Math.random() * 4 + 1);
+  }
+
+  if (isStartOfGame) {
+    setGrid(x, y, 1);
+    return;
+  }
+
+  setGrid(x, y, Math.floor(Math.random() * 2 + 1));
+}

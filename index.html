@@ -12,7 +12,8 @@
 
     <canvas id="game" width="820" height="820"></canvas>
 
-    <script src="./assets/game.js"></script>
+    <script src="./assets/scripts/game.js"></script>
+    <script src="./assets/scripts/color.js"></script>
 
     <button id="moveLeftBttn">L</button>
     <button id="moveUpBttn">U</button>
@@ -30,7 +31,7 @@
       }
       ctx.save();
 
-      setGrid(2, 2, 1);
+      createRandomSquare(true);
 
       redraw();
 
@@ -38,6 +39,7 @@
       document.getElementById("moveLeftBttn").addEventListener(
         "click",
         function () {
+          createRandomSquare(false);
           move(-1, 0);
         },
         false
@@ -46,6 +48,7 @@
       document.getElementById("moveUpBttn").addEventListener(
         "click",
         function () {
+          createRandomSquare(false);
           move(0, -1);
         },
         false
@@ -54,6 +57,7 @@
       document.getElementById("moveDownBttn").addEventListener(
         "click",
         function () {
+          createRandomSquare(false);
           move(0, 1);
         },
         false
@@ -62,6 +66,7 @@
       document.getElementById("moveRightBttn").addEventListener(
         "click",
         function () {
+          createRandomSquare(false);
           move(1, 0);
         },
         false
