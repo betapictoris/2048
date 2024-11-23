@@ -19,7 +19,7 @@ function drawSquare(x, y) {
 
 function setGrid(x, y, stage) {
   value = 2 ** stage;
-  grid[y-1][x-1] = value;
+  grid[y-1][x-1] = stage;
   console.log(grid)
 
   ctx.fillStyle = "#C9F3C9";
@@ -28,4 +28,24 @@ function setGrid(x, y, stage) {
   ctx.fillStyle = "#000000";
   ctx.font = "48px sans-serif";
   ctx.fillText(value, x * 16 + 185 * (x - 1) + 80,  y * 16 + 185 * (y - 1) + 104);
+}
+
+function redraw() {
+  ctx.restore();
+
+  for (const y in grid) {
+    console.log(`${y}: ${grid[y]}`)
+    for (const x in grid[y]) {
+      try {
+        if (grid[y][x] != 0) {
+          console.log(x, y, grid[y][x])
+          setGrid(x+1, y+1, grid[y][x])
+        }
+      } catch (e) {
+        console.log("Failed to redraw:", e);
+      }
+    }
+  }
+
+  console.log("Redrew")
 }
