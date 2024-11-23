@@ -12,3 +12,22 @@ function hslToHex(h, s, l) {
   };
   return `#${f(0)}${f(8)}${f(4)}`;
 }
+
+// stageToHex takes a block stage and computes a hex code
+function stageToHex(stage) {
+  hue = (stage * 16) % 360;
+  sat = 64 + 16 * stage;
+  light = 46 + 16 * stage;
+
+  console.log(hue, sat, light);
+
+  if (sat >= 100) {
+    sat = 100;
+  }
+
+  if (light >= 64) {
+    light = 64;
+  }
+
+  return hslToHex(hue, sat, light);
+}

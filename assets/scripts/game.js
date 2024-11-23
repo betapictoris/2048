@@ -23,7 +23,8 @@ function setGrid(x, y, stage) {
   value = 2 ** stage;
   grid[y - 1][x - 1] = stage;
 
-  ctx.fillStyle = "#C9F3C9";
+  console.log(stageToHex(stage));
+  ctx.fillStyle = stageToHex(stage);
   drawSquare(x, y);
 
   ctx.fillStyle = "#000000";
