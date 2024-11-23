@@ -14,6 +14,11 @@
 
     <script src="./assets/game.js"></script>
 
+    <button id="moveLeftBttn">L</button>
+    <button id="moveUpBttn">U</button>
+    <button id="moveDownBttn">D</button>
+    <button id="moveRightBttn">R</button>
+
     <script>
       // Draw grid
       ctx.fillStyle = "#efefef";
@@ -23,12 +28,44 @@
           drawSquare(x, y);
         }
       }
-
       ctx.save();
 
       setGrid(2, 2, 1);
 
       redraw();
+
+      // Events
+      document.getElementById("moveLeftBttn").addEventListener(
+        "click",
+        function () {
+          move(-1, 0);
+        },
+        false
+      );
+
+      document.getElementById("moveUpBttn").addEventListener(
+        "click",
+        function () {
+          move(0, -1);
+        },
+        false
+      );
+
+      document.getElementById("moveDownBttn").addEventListener(
+        "click",
+        function () {
+          move(0, 1);
+        },
+        false
+      );
+
+      document.getElementById("moveRightBttn").addEventListener(
+        "click",
+        function () {
+          move(1, 0);
+        },
+        false
+      );
     </script>
   </body>
 </html>
