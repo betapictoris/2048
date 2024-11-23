@@ -28,11 +28,18 @@ function setGrid(x, y, stage) {
 
   ctx.fillStyle = "#000000";
   ctx.font = "48px sans-serif";
-  ctx.fillText(
-    value,
-    x * 16 + 185 * (x - 1) + 80,
-    y * 16 + 185 * (y - 1) + 104
-  );
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  txtWidth = ctx.measureText(value).width;
+  txtHeight = ctx.measureText(value).height;
+  console.log(txtWidth, txtHeight);
+
+  var rectHeight = 185;
+  var rectWidth = 185;
+  var rectX = x * 16 + 185 * (x - 1);
+  var rectY = y * 16 + 185 * (y - 1);
+  ctx.fillText(value, rectX + rectWidth / 2, rectY + rectHeight / 2);
 }
 
 // move moves all visible blocks to in a given direction.
