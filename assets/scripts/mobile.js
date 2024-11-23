@@ -5,6 +5,14 @@ function isMobile() {
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 }
 
+function isUnsupported() {
+  return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+if (isUnsupported()) {
+  document.getElementById("safari").open = true;
+}
+
 if (isMobile()) {
   document.getElementsByTagName("body")[0].innerHTML += `<div class="controls">
       <button class="mvBttn" id="moveLeftBttn">&LeftArrow;</button>
