@@ -35,21 +35,6 @@ function setGrid(x, y, stage) {
   );
 }
 
-function redraw() {
-  for (const y in grid) {
-    ctx.restore();
-    for (const x in grid[y]) {
-      try {
-        if (grid[y][x] != 0) {
-          setGrid(Number(x) + 1, Number(y) + 1, grid[y][x]);
-        }
-      } catch (e) {
-        console.log("Failed to redraw:", e);
-      }
-    }
-  }
-}
-
 // move moves all visible blocks to in a given direction.
 function move(xDirection, yDirection) {
   gridValues = grid.slice();
@@ -139,7 +124,7 @@ function createRandomSquare(isStartOfGame) {
 function gameTick() {
   console.log("tick");
 
-  if (grid.every((val, _, _) => val.every((val, _, _) => val >= 1))) {
+  if (grid.every((val) => val.every((val) => val >= 1))) {
     alert("Game over");
     window.location.reload();
     throw "Game over, ending event."; // Stops memory leak. ¯\_(ツ)_/¯
