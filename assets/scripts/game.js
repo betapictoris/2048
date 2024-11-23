@@ -23,7 +23,6 @@ function setGrid(x, y, stage) {
   value = 2 ** stage;
   grid[y - 1][x - 1] = stage;
 
-  console.log(stageToHex(stage));
   ctx.fillStyle = stageToHex(stage);
   drawSquare(x, y);
 

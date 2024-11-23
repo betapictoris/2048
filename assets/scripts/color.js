@@ -19,8 +19,6 @@ function stageToHex(stage) {
   sat = 64 + 16 * stage;
   light = 46 + 16 * stage;
 
-  console.log(hue, sat, light);
-
   if (sat >= 100) {
     sat = 100;
   }
