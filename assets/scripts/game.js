@@ -139,7 +139,7 @@ function createRandomSquare(isStartOfGame) {
 function gameTick() {
   console.log("tick");
 
-  if (grid.every((val, i, arr) => val.every((val, i, arr) => val >= 1))) {
+  if (grid.every((val, _, _) => val.every((val, _, _) => val >= 1))) {
     alert("Game over");
     window.location.reload();
     throw "Game over, ending event."; // Stops memory leak. ¯\_(ツ)_/¯
