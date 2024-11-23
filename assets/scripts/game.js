@@ -31,10 +31,6 @@ function setGrid(x, y, stage) {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  txtWidth = ctx.measureText(value).width;
-  txtHeight = ctx.measureText(value).height;
-  console.log(txtWidth, txtHeight);
-
   var rectHeight = 185;
   var rectWidth = 185;
   var rectX = x * 16 + 185 * (x - 1);
