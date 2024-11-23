@@ -98,9 +98,20 @@ function move(xDirection, yDirection) {
         xi + xDirection < 4 &&
         yi + yDirection >= 0 &&
         yi > yDirection < 4 &&
-        gridValues[yi][xi] !== 0
+        gridValues[yi][xi] !== 0 &&
+        gridValues[yi + yDirection][xi + xDirection] === 0
       ) {
         setGrid(xi + 1 + xDirection, yi + 1 + yDirection, gridValues[yi][xi]);
+        clearSquare(xi + 1, yi + 1);
+      } else if (
+        gridValues[yi + yDirection][xi + xDirection] === gridValues[yi][xi]
+      ) {
+        console.log(2 ** (gridValues[yi][xi] + 1));
+        setGrid(
+          xi + 1 + xDirection,
+          yi + 1 + yDirection,
+          gridValues[yi][xi] + 1
+        );
         clearSquare(xi + 1, yi + 1);
       }
     }
