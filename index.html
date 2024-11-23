@@ -14,6 +14,7 @@
 
     <script src="./assets/scripts/game.js"></script>
     <script src="./assets/scripts/color.js"></script>
+    <script src="./assets/scripts/eventTrigger.js"></script>
 
     <div class="controls">
       <button class="mvBttn" id="moveLeftBttn">&LeftArrow;</button>
@@ -35,8 +36,7 @@
       document.getElementById("moveLeftBttn").addEventListener(
         "click",
         function () {
-          gameTick();
-          move(-1, 0);
+          moveLeft();
         },
         false
       );
@@ -44,8 +44,7 @@
       document.getElementById("moveUpBttn").addEventListener(
         "click",
         function () {
-          gameTick();
-          move(0, -1);
+          moveUp();
         },
         false
       );
@@ -53,8 +52,7 @@
       document.getElementById("moveDownBttn").addEventListener(
         "click",
         function () {
-          gameTick();
-          move(0, 1);
+          moveDown();
         },
         false
       );
@@ -62,8 +60,7 @@
       document.getElementById("moveRightBttn").addEventListener(
         "click",
         function () {
-          gameTick();
-          move(1, 0);
+          moveRight();
         },
         false
       );
@@ -73,20 +70,15 @@
 
       function checkKey(e) {
         e = e || window.event;
-        console.log(e);
 
         if (e.keyCode == 38 || e.key == "w") {
-          gameTick();
-          move(0, -1);
+          moveUp();
         } else if (e.keyCode == 40 || e.key == "s") {
-          gameTick();
-          move(0, 1);
+          moveDown();
         } else if (e.keyCode == 37 || e.key == "a") {
-          gameTick();
-          move(-1, 0);
+          moveLeft();
         } else if (e.keyCode == 39 || e.key == "d") {
-          gameTick();
-          move(1, 0);
+          moveRight();
         }
       }
     </script>
