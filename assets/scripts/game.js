@@ -82,7 +82,8 @@ function move(xDirection, yDirection) {
         xi + xDirection >= 0 &&
         xi + xDirection < 4 &&
         yi + yDirection >= 0 &&
-        yi + yDirection < 4
+        yi + yDirection < 4 &&
+        gridValues[yi][xi] !== 0
       ) {
         if (
           gridValues[yi + yDirection][xi + xDirection] === gridValues[yi][xi]
