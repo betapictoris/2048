@@ -6,7 +6,8 @@ function isMobile() {
 }
 
 function isUnsupported() {
-  return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  // Hopefully someday we can change this. ;-;
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 }
 
 if (isUnsupported()) {
