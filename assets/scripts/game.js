@@ -121,15 +121,3 @@ function createRandomSquare(isStartOfGame) {
 
   setGrid(x, y, Math.floor(Math.random() * 2 + 1));
 }
-
-function gameTick() {
-  console.log("tick");
-
-  if (grid.every((val) => val.every((val) => val >= 1))) {
-    alert("Game over");
-    window.location.reload();
-    throw "Game over, ending event."; // Stops memory leak. ¯\_(ツ)_/¯
-  }
-
-  createRandomSquare(false);
-}
