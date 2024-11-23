@@ -17,7 +17,7 @@ function drawSquare(x, y) {
   );  
 }
 
-function setVaultAtSquare(x, y, stage) {
+function setGrid(x, y, stage) {
   value = 2 ** stage;
   grid[y-1][x-1] = value;
   console.log(grid)
