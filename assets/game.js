@@ -22,7 +22,6 @@ function clearSquare(x, y) {
 function setGrid(x, y, stage) {
   value = 2 ** stage;
   grid[y - 1][x - 1] = stage;
-  console.log(grid);
 
   ctx.fillStyle = "#C9F3C9";
   drawSquare(x, y);
@@ -39,11 +38,9 @@ function setGrid(x, y, stage) {
 function redraw() {
   for (const y in grid) {
     ctx.restore();
-    console.log(`${y}: ${grid[y]}`);
     for (const x in grid[y]) {
       try {
         if (grid[y][x] != 0) {
-          console.log(x, y, grid[y][x]);
           setGrid(Number(x) + 1, Number(y) + 1, grid[y][x]);
         }
       } catch (e) {
@@ -51,17 +48,51 @@ function redraw() {
       }
     }
   }
-
-  console.log("Redrew");
 }
 
 // move moves all visible blocks to in a given direction.
 function move(xDirection, yDirection) {
   gridValues = grid.slice();
 
+  yiStart = 0;
+  yiEndValue = 3;
+  yiIncrmnt = yDirection;
+
+  if (yDirection < 0) {
+    yiStart = 3;
+    yiEndValue = 0;
+  } else if (yDirection == 0) {
+    yiIncrmnt = 1;
+  }
+
+  xiStart = 0;
+  xiEndValue = 3;
+  xiIncrmnt = xDirection;
+
+  if (xDirection < 0) {
+    xiStart = 3;
+    xiEndValue = 0;
+  } else if (xDirection == 0) {
+    xiIncrmnt = 1;
+  }
+
+  function isYDone(yi) {
+    if (yDirection < 0) {
+      return yi >= yiEndValue;
+    }
+    return yi <= yiEndValue;
+  }
+
+  function isXDone(xi) {
+    if (xDirection < 0) {
+      return xi >= xiEndValue;
+    }
+    return xi <= xiEndValue;
+  }
+
   // PERF: I can only imagine that this isn't the fast way to do this.
-  for (let yi = 0; yi < grid.length; yi++) {
-    for (let xi = 0; xi < grid[yi].length; xi++) {
+  for (let yi = yiStart; isYDone(yi); yi += yiIncrmnt) {
+    for (let xi = xiStart; isXDone(xi); xi += xiIncrmnt) {
       if (
         xi + xDirection >= 0 &&
         xi + xDirection < 4 &&
@@ -74,12 +105,4 @@ function move(xDirection, yDirection) {
       }
     }
   }
-
-  console.log(grid);
 }
-
-// computerNearestEmptySpace finds the nearest empty space in the direction of
-// xDirection and yDirection from x, y.  x and y should be values in the
-// position of the square in the visible game grid. xDirection and yDirection
-// should be -1, 0, or 1.
-function computeNearestEmptySpace(x, y, xDirection, yDirection) {}
