@@ -4,8 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2048</title>
+
+    <link rel="stylesheet" href="/assets/base.css" />
   </head>
   <body>
     <h1>2048</h1>
+
+    <canvas id="game" width="820" height="820"></canvas>
+
+    <script src="./assets/game.js"></script>
+
+    <script>
+      // Draw grid
+      ctx.fillStyle = "#efefef";
+
+      for (let x = 1; x <= 4; x++) {
+        for (let y = 1; y <= 4; y++) {
+          drawSquare(x, y);
+        }
+      }
+
+      // Controls
+      node.addEventListener("keydown", (event) => {
+        const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+        if (key == "ArrowRight") {
+          ctx.fillRect();
+        }
+      });
+    </script>
   </body>
 </html>
