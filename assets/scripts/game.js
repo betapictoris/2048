@@ -42,68 +42,44 @@ function setGrid(x, y, stage) {
 function move(xDirection, yDirection) {
   gridValues = grid.slice();
 
-  yiStart = 0;
-  yiEndValue = 3;
-  yiIncrmnt = yDirection;
+  xi = 0;
+  yi = 0;
 
-  if (yDirection < 0) {
-    yiStart = 3;
-    yiEndValue = 0;
-  } else if (yDirection == 0) {
-    yiIncrmnt = 1;
-  }
+  while (xi < 4 && yi < 4) {
+    stage = gridValues[yi][xi]
+    if (stage !== 0) {
+      openSpace = [xi+1, yi+1]
+      checkPoint = [xi+xDirection, yi+yDirection]
 
-  xiStart = 0;
-  xiEndValue = 3;
-  xiIncrmnt = xDirection;
-
-  if (xDirection < 0) {
-    xiStart = 3;
-    xiEndValue = 0;
-  } else if (xDirection == 0) {
-    xiIncrmnt = 1;
-  }
-
-  function isYDone(yi) {
-    if (yDirection < 0) {
-      return yi >= yiEndValue;
-    }
-    return yi <= yiEndValue;
-  }
-
-  function isXDone(xi) {
-    if (xDirection < 0) {
-      return xi >= xiEndValue;
-    }
-    return xi <= xiEndValue;
-  }
-
-  // PERF: I can only imagine that this isn't the fast way to do this.
-  for (let yi = yiStart; isYDone(yi); yi += yiIncrmnt) {
-    for (let xi = xiStart; isXDone(xi); xi += xiIncrmnt) {
-      if (
-        xi + xDirection >= 0 &&
-        xi + xDirection < 4 &&
-        yi + yDirection >= 0 &&
-        yi + yDirection < 4 &&
-        gridValues[yi][xi] !== 0
+      while (
+        checkPoint[0] >= 0 &&
+        checkPoint[0] < 4 &&
+        checkPoint[1] >= 0 &&
+        checkPoint[1] < 4
       ) {
-        if (
-          gridValues[yi + yDirection][xi + xDirection] === gridValues[yi][xi]
-        ) {
-          setGrid(
-            xi + 1 + xDirection,
-            yi + 1 + yDirection,
-            gridValues[yi][xi] + 1
-          );
-          clearSquare(xi + 1, yi + 1);
-        }
-
-        if (gridValues[yi + yDirection][xi + xDirection] === 0) {
-          setGrid(xi + 1 + xDirection, yi + 1 + yDirection, gridValues[yi][xi]);
-          clearSquare(xi + 1, yi + 1);
+        if (gridValues[checkPoint[1]][checkPoint[0]] === 0) {
+          openSpace = [checkPoint[0]+1, checkPoint[1]+1]
+          checkPoint[0] += xDirection
+          checkPoint[1] += yDirection
+        } else if (gridValues[checkPoint[1]][checkPoint[0]] === stage) {
+          openSpace = [checkPoint[0]+1, checkPoint[1]+1]
+          checkPoint[0] += xDirection
+          checkPoint[1] += yDirection
+          stage++
+          break
+        } else {
+          break
         }
       }
+
+      clearSquare(xi+1,yi+1)
+      setGrid(openSpace[0], openSpace[1], stage)
+    }
+
+    yi++
+    if (yi == 4) {
+      xi++
+      yi = 0;
     }
   }
 }
