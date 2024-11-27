@@ -15,16 +15,12 @@ function hslToHex(h, s, l) {
 
 // stageToHex takes a block stage and computes a hex code
 function stageToHex(stage) {
-  hue = (stage * 16) % 360;
-  sat = 64 + 16 * stage;
-  light = 46 + 16 * stage;
+  hue = 16 * Math.sin((1.2 * stage)-0.8) + 26
+  sat = ((5.46429 * stage) + 60) % 100;
+  light = 90 * (0.95 ** stage)
 
-  if (sat >= 100) {
-    sat = 100;
-  }
-
-  if (light >= 64) {
-    light = 64;
+  if (light >= 90) {
+    light = 90;
   }
 
   return hslToHex(hue, sat, light);
