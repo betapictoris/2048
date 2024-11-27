@@ -2,28 +2,28 @@ function moveLeft() {
   checkGameOver();
   move(-1, 0);
   createRandomSquare(false);
-  calculateScore();
+  checkHighScore();
 }
 
 function moveUp() {
   checkGameOver();
   move(0, -1);
   createRandomSquare(false);
-  calculateScore();
+  checkHighScore();
 }
 
 function moveDown() {
   checkGameOver();
   move(0, 1);
   createRandomSquare(false);
-  calculateScore();
+  checkHighScore();
 }
 
 function moveRight() {
   checkGameOver();
   move(1, 0);
   createRandomSquare(false);
-  calculateScore();
+  checkHighScore();
 }
 
 function checkGameOver() {
@@ -34,17 +34,7 @@ function checkGameOver() {
   }
 }
 
-function calculateScore() {
-  score = 0;
-
-  for (let row = 0; row < grid.length; row++) {
-    for (let col = 0; col < grid[row].length; col++) {
-      if (grid[row][col] !== 0) {
-        score += 2 ** grid[row][col];
-      }
-    }
-  }
-
+function checkHighScore() {
   if (score > Number(localStorage.getItem("highscore"))) {
     localStorage.setItem("highscore", score);
   }

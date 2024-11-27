@@ -1,3 +1,5 @@
+score = 0;
+
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
@@ -66,6 +68,7 @@ function move(xDirection, yDirection) {
           checkPoint[0] += xDirection
           checkPoint[1] += yDirection
           stage++
+          score += (2 ** stage)
           break
         } else {
           break
