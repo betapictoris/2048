@@ -1,13 +1,6 @@
 :root {
-  --fg: #000;
-  --bg: #fff;
-
-  --green: #C9F3C9;
-  --red: #FDBABA;
-  --orange: #FFE7C1;
-  --yellow: #FAFAE5;
-  --pink: #D7C6FC;
-  --purple: #B4B5EE;
+  --fg: #776e65;
+  --bg: #faf8ef;
 }
 
 body {
@@ -61,8 +54,7 @@ canvas {
   max-width: 820px;
   max-height: 820px;
 
-  background-color: #fdfdfd;
-  border: 2px solid #efefef;
+  background-color: #bbada0;
 }
 
  @media only screen and (max-width: 80vh) {
