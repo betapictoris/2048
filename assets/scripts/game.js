@@ -26,7 +26,7 @@ function setGrid(x, y, stage) {
   ctx.fillStyle = stageToHex(stage);
   drawSquare(x, y);
 
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = stageToForeground(stage);
   ctx.font = "48px sans-serif";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
