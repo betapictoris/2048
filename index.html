@@ -46,7 +46,7 @@
     <script src="./assets/scripts/mobile.js"></script>
 
     <script>
-      document.getElementById("highscore").innerText = getCookie("highscore");
+      document.getElementById("highscore").innerText = localStorage.getItem("highscore");
 
       // Draw grid
       for (let x = 1; x <= 4; x++) {
