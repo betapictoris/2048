@@ -88,18 +88,32 @@ function move(xDirection, yDirection) {
 }
 
 function createRandomSquare(isStartOfGame) {
-  x = Math.floor(Math.random() * 4 + 1);
-  y = Math.floor(Math.random() * 4 + 1);
+  spaces = getEmptySpaces()
+  if (spaces.length === 0) {
+    endGame()
+  }
+  
+  point = spaces[Math.floor(Math.random() * spaces.length)]
 
-  while (grid[y - 1][x - 1] !== 0) {
-    x = Math.floor(Math.random() * 4 + 1);
-    y = Math.floor(Math.random() * 4 + 1);
+  if (!isStartOfGame) {
+    setGrid(point[0], point[1], Math.floor(Math.random() * 2 + 1));
+    return
+  }
+  setGrid(point[0], point[1], 1);
+}
+
+function getEmptySpaces() {
+  empty = []
+
+  for (let gridY = 0; gridY < 4; gridY++) {
+    for (let gridX = 0; gridX < 4; gridX++) {
+      state = grid[gridY][gridX]
+
+      if (state === 0) {
+        empty.push([gridX+1, gridY+1])
+      }
+    }
   }
 
-  if (isStartOfGame) {
-    setGrid(x, y, 1);
-    return;
-  }
-
-  setGrid(x, y, Math.floor(Math.random() * 2 + 1));
+  return empty
 }
