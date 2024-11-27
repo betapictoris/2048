@@ -1,6 +1,6 @@
 :root {
-  --fg: #776e65;
-  --bg: #faf8ef;
+  --fg: #000;
+  --bg: #fff;
 }
 
 body {
@@ -54,7 +54,8 @@ canvas {
   max-width: 820px;
   max-height: 820px;
 
-  background-color: #bbada0;
+  background-color: #fdfdfd;
+  border: 2px solid #efefef;
 }
 
  @media only screen and (max-width: 80vh) {

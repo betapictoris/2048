@@ -15,7 +15,7 @@ function drawSquare(x, y) {
 function clearSquare(x, y) {
   grid[y - 1][x - 1] = 0;
 
-  ctx.fillStyle = "#cdc1b4";
+  ctx.fillStyle = "#efefef";
   drawSquare(x, y);
 }
 
