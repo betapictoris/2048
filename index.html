@@ -57,19 +57,28 @@
       createRandomSquare(true);
 
       // Keyboard events
-      document.onkeyup = checkKey;
+      newInput = true;
+      document.onkeydown = checkKey;
+      document.onkeyup = () => {newInput = true};
 
       function checkKey(e) {
         e = e || window.event;
 
-        if (e.keyCode == 38 || e.key == "w") {
-          moveUp();
-        } else if (e.keyCode == 40 || e.key == "s") {
-          moveDown();
-        } else if (e.keyCode == 37 || e.key == "a") {
-          moveLeft();
-        } else if (e.keyCode == 39 || e.key == "d") {
-          moveRight();
+        console.log(newInput)
+        if (newInput) {
+          if (e.keyCode == 38 || e.key == "w") {
+            newInput = false;
+            moveUp();
+          } else if (e.keyCode == 40 || e.key == "s") {
+            newInput = false;
+            moveDown();
+          } else if (e.keyCode == 37 || e.key == "a") {
+            newInput = false;
+            moveLeft();
+          } else if (e.keyCode == 39 || e.key == "d") {
+            newInput = false;
+            moveRight();
+          }
         }
       }
     </script>
