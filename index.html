@@ -15,12 +15,12 @@
       <div id="scores">
         <span class="scoreCard">
           Score
-          <span id="score">2</span>
+          <span id="score">0</span>
         </span>
 
         <span class="scoreCard">
           Highscore
-          <span id="highscore">0</span>
+          <span id="highscore"></span>
         </span>
       </div>
     </header>
@@ -46,7 +46,11 @@
     <script src="./assets/scripts/mobile.js"></script>
 
     <script>
-      document.getElementById("highscore").innerText = localStorage.getItem("highscore");
+      if (localStorage.getItem("highscore") == null) {
+        localStorage.setItem("highscore", 0);
+      }
+      document.getElementById("highscore").innerText =
+        localStorage.getItem("highscore");
 
       // Draw grid
       for (let x = 1; x <= 4; x++) {
@@ -59,12 +63,14 @@
       // Keyboard events
       newInput = true;
       document.onkeydown = checkKey;
-      document.onkeyup = () => {newInput = true};
+      document.onkeyup = () => {
+        newInput = true;
+      };
 
       function checkKey(e) {
         e = e || window.event;
 
-        console.log(newInput)
+        console.log(newInput);
         if (newInput) {
           if (e.keyCode == 38 || e.key == "w") {
             newInput = false;
